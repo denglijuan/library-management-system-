@@ -1,4 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Classification } from '../entities/classification.entity';
 
 @Injectable()
@@ -10,13 +15,19 @@ export class ClassificationService {
   }
 
   remove(id: number) {
+    const oldLength = this.classification.length;
     this.classification = this.classification.filter((item) => {
-      console.log('id', typeof id);
-      console.log('item.id', typeof item.id);
-      console.log('item.id !== id', item.id !== id);
       return item.id !== id;
     });
-    console.log('this.classification', this.classification);
+    const newLength = this.classification.length;
+    if (oldLength === newLength) {
+      // throw new HttpException(
+      //   `Classification #${id} not found`,
+      //   HttpStatus.NOT_FOUND,
+      // );
+
+      throw new NotFoundException(`Classification #${id} not found`);
+    }
   }
 
   create(classificationDto: any) {

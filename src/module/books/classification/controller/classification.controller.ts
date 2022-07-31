@@ -10,6 +10,8 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CreateClassification } from '../dto/create-calssification.dto';
+import { UpdateClassification } from '../dto/update-classification.dto';
 import { ClassificationService } from '../service/classification.service';
 
 @Controller('books')
@@ -31,13 +33,13 @@ export class ClassificationController {
 
   @Post('classification')
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() body) {
+  create(@Body() body: CreateClassification) {
     const id = this.classificationService.create(body);
     return { id, describe: '创建成功' };
   }
 
   @Patch('classification/:id')
-  update(@Param('id') id: number, @Body() body) {
+  update(@Param('id') id: number, @Body() body: UpdateClassification) {
     this.classificationService.update(+id, body);
   }
 }
