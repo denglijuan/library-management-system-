@@ -9,7 +9,17 @@ async function bootstrap() {
   app.setGlobalPrefix('v1');
 
   // 内置验证管道
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      // 验证器将过滤无用的属性
+      whitelist: true,
+
+      // 存有多余的字段则会抛出 400 错误
+      // forbidNonWhitelisted: true,
+
+      transform: true,
+    }),
+  );
   await app.listen(3000);
 }
 bootstrap();
