@@ -10,8 +10,8 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { CreateClassification } from '../dto/create-calssification.dto';
-import { UpdateClassification } from '../dto/update-classification.dto';
+import { CreateClassificationDto } from '../dto/create-calssification.dto';
+import { UpdateClassificationDto } from '../dto/update-classification.dto';
 import { ClassificationService } from '../service/classification.service';
 
 @Controller('books')
@@ -28,18 +28,18 @@ export class ClassificationController {
   @Delete('classification/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: number) {
-    this.classificationService.remove(+id);
+    this.classificationService.remove(id);
   }
 
   @Post('classification')
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() body: CreateClassification) {
-    const id = this.classificationService.create(body);
-    return { id, describe: '创建成功' };
+  create(@Body() body: CreateClassificationDto) {
+    this.classificationService.create(body);
+    return '创建成功';
   }
 
   @Patch('classification/:id')
-  update(@Param('id') id: number, @Body() body: UpdateClassification) {
-    this.classificationService.update(+id, body);
+  update(@Param('id') id: number, @Body() body: UpdateClassificationDto) {
+    this.classificationService.update(id, body);
   }
 }

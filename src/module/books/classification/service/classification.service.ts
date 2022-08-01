@@ -1,48 +1,51 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateClassificationDto } from '../dto/create-calssification.dto';
+import { UpdateClassificationDto } from '../dto/update-classification.dto';
 import { Classification } from '../entities/classification.entity';
 
 @Injectable()
 export class ClassificationService {
-  private classification: Classification[] = [];
+  constructor(
+    @InjectRepository(Classification)
+    private readonly classificationRepository: Repository<Classification>,
+  ) {}
 
   list(limit: number, offset: number) {
-    return this.classification.slice(offset, offset + limit);
+    return this.classificationRepository.find();
   }
 
-  remove(id: number) {
-    const oldLength = this.classification.length;
-    this.classification = this.classification.filter((item) => {
-      return item.id !== id;
-    });
-    const newLength = this.classification.length;
-    if (oldLength === newLength) {
-      // throw new HttpException(
-      //   `Classification #${id} not found`,
-      //   HttpStatus.NOT_FOUND,
-      // );
+  async findOne(id: number) {
+    // const classification = await this.classificationRepository.findOne(id);
+    // if (!classification) {
+    //   throw new NotFoundException(`Classification #${id} not found`);
+    // }
+    // return classification;
+  }
 
+  async remove(id: number) {
+    // const classification = await this.findOne(id);
+    // return this.classificationRepository.remove(classification);
+  }
+
+  create(createClassificationDto: CreateClassificationDto) {
+    const classification = this.classificationRepository.create(
+      createClassificationDto,
+    );
+    return this.classificationRepository.save(classification);
+  }
+
+  async update(id: number, updateClassificationDto: UpdateClassificationDto) {
+    const classification = await this.classificationRepository.preload({
+      id,
+      ...updateClassificationDto,
+    });
+
+    if (!classification) {
       throw new NotFoundException(`Classification #${id} not found`);
     }
-  }
 
-  create(classificationDto: any) {
-    const last = this.classification.length - 1;
-    const id = this.classification[last]?.id + 1 || 1;
-    this.classification.push({ ...classificationDto, id });
-    return id;
-  }
-
-  update(id: number, classificationDto: any) {
-    this.classification = this.classification.map((item) => {
-      if (id === item.id) {
-        return { ...classificationDto, id };
-      }
-      return item;
-    });
+    return this.classificationRepository.save(classification);
   }
 }
