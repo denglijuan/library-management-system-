@@ -27,7 +27,7 @@ export class ClassificationController {
   // @Param() params 传入整个的 query 参数
   @Delete('classification/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: number) {
+  remove(@Param('id') id: string) {
     this.classificationService.remove(id);
   }
 
@@ -39,7 +39,7 @@ export class ClassificationController {
   }
 
   @Patch('classification/:id')
-  update(@Param('id') id: number, @Body() body: UpdateClassificationDto) {
+  update(@Param('id') id: string, @Body() body: UpdateClassificationDto) {
     this.classificationService.update(id, body);
   }
 }

@@ -13,20 +13,25 @@ export class ClassificationService {
   ) {}
 
   list(limit: number, offset: number) {
-    return this.classificationRepository.find();
+    return this.classificationRepository.find({
+      skip: offset,
+      take: limit,
+    });
   }
 
-  async findOne(id: number) {
-    // const classification = await this.classificationRepository.findOne(id);
-    // if (!classification) {
-    //   throw new NotFoundException(`Classification #${id} not found`);
-    // }
-    // return classification;
+  async findOne(id: string) {
+    const classification = await this.classificationRepository.findOneBy({
+      id,
+    });
+    if (!classification) {
+      throw new NotFoundException(`Classification #${id} not found`);
+    }
+    return classification;
   }
 
-  async remove(id: number) {
-    // const classification = await this.findOne(id);
-    // return this.classificationRepository.remove(classification);
+  async remove(id: string) {
+    const classification = await this.findOne(id);
+    return this.classificationRepository.remove(classification);
   }
 
   create(createClassificationDto: CreateClassificationDto) {
@@ -36,7 +41,7 @@ export class ClassificationService {
     return this.classificationRepository.save(classification);
   }
 
-  async update(id: number, updateClassificationDto: UpdateClassificationDto) {
+  async update(id: string, updateClassificationDto: UpdateClassificationDto) {
     const classification = await this.classificationRepository.preload({
       id,
       ...updateClassificationDto,

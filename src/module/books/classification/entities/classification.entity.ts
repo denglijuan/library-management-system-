@@ -9,14 +9,14 @@ import {
 
 @Entity()
 export class Classification {
-  @PrimaryGeneratedColumn({ comment: 'id' })
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ length: 10, comment: '类型' })
   type: string;
 
   @Column({ length: 200, comment: '描述', nullable: true })
-  describe: string;
+  description: string;
 
   @CreateDateColumn({
     type: 'timestamp',
