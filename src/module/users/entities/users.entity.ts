@@ -20,7 +20,7 @@ export class Users {
   @ManyToOne(() => Roles, (roles) => roles.name)
   role: string;
 
-  @Column({ length: 11, comment: '电话', nullable: true })
+  @Column({ comment: '电话', nullable: true })
   phone: number;
 
   @Column({ length: 40, comment: '邮箱', nullable: true })
