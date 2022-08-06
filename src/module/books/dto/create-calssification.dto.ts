@@ -5,5 +5,5 @@ export class CreateClassificationDto {
   readonly type: string;
 
   @IsString()
-  readonly describe: string;
+  readonly description?: string;
 }

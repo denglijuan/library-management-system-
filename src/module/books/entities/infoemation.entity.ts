@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Classification } from '../../classification/entities/classification.entity';
+import { Classification } from './classification.entity';
 
 @Entity()
 export class Information {
@@ -19,7 +19,7 @@ export class Information {
   @ManyToOne(() => Users, (users) => users.id)
   userId: number;
 
-  @Column({ length: 13, comment: '图书ISBN' })
+  @Column({ comment: '图书ISBN' })
   ISBN: number;
 
   @Column({ length: 50, comment: '图书名称' })

@@ -9,4 +9,4 @@ import { ClassificationService } from './service/classification.service';
   controllers: [ClassificationController],
   providers: [ClassificationService],
 })
-export class ClassificationModule {}
+export class BooksModule {}
