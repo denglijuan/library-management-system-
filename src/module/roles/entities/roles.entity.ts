@@ -8,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Permissions } from '../../permissions/entities/permissions.entity';
 
 @Entity()
 export class Roles {
