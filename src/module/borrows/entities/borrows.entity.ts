@@ -1,4 +1,4 @@
-import { Information } from 'src/module/books/information/entities/infoemation.entity';
+import { Information } from 'src/module/books/entities/infoemation.entity';
 import { Users } from 'src/module/users/entities/users.entity';
 import {
   Column,

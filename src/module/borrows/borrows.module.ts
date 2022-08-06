@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
-import { BorrowsService } from './borrows.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { BorrowsService } from './service/borrows.service';
+import { Borrows } from './entities/borrows.entity';
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forFeature([Borrows])],
   controllers: [],
   providers: [BorrowsService],
 })

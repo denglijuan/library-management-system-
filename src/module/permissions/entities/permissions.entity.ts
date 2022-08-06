@@ -3,16 +3,13 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class Permission {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column({ length: 20, comment: '权限标识' })
+export class Permissions {
+  @PrimaryColumn({ length: 20, comment: '权限标识' })
   name: string;
 
   @Column({ length: 200, comment: '描述', nullable: true })
