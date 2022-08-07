@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApprovalModule } from './module/approval/approval.module';
 import { BooksModule } from './module/books/books.module';
 import { BorrowsModule } from './module/borrows/borrows.module';
+import { PermissionsModule } from './module/permissions/permissions.module';
 import { RolesModule } from './module/roles/roles.module';
 import { UsersModule } from './module/users/users.module';
 import { Users } from './module/users/entities/users.entity';
@@ -16,10 +17,11 @@ import { Approval } from './module/approval/entities/approval.entity';
 @Module({
   imports: [
     ApprovalModule,
-    UsersModule,
     BooksModule,
     BorrowsModule,
+    PermissionsModule,
     RolesModule,
+    UsersModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

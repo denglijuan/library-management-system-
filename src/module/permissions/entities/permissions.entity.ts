@@ -1,7 +1,6 @@
 import {
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   PrimaryColumn,
   UpdateDateColumn,
@@ -28,11 +27,4 @@ export class Permissions {
     comment: '更新时间',
   })
   updatedAt: Date;
-
-  @DeleteDateColumn({
-    type: 'timestamp',
-    name: 'delete_at',
-    comment: '删除时间',
-  })
-  deleteAt: Date;
 }
