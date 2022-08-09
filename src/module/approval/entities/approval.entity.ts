@@ -18,8 +18,8 @@ export class Approval {
   @ManyToOne(() => Information, (Information) => Information.id)
   booksInfomationId: Information;
 
-  @ManyToOne(() => Users, (user) => user.id)
-  userId: Users;
+  @ManyToOne(() => Users, (user) => user.name)
+  userId: string;
 
   @Column('datetime', { name: 'stard_at', comment: '借阅时间' })
   stardAt;

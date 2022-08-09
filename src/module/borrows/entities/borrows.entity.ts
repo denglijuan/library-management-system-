@@ -15,8 +15,8 @@ export class Borrows {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Users, (users) => users.id)
-  userId: Users;
+  @ManyToOne(() => Users, (users) => users.name)
+  userId: string;
 
   @ManyToOne(() => Information, (Information) => Information.id)
   informationId: Information;

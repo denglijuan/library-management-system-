@@ -5,17 +5,17 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 export class Users {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column({ length: 20, comment: '名称' })
+  @PrimaryColumn()
   name: string;
+
+  @Column({ comment: '密码' })
+  password: string;
 
   @ManyToOne(() => Roles, (roles) => roles.name)
   role: string;

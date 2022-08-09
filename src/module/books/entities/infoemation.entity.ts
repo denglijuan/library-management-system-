@@ -16,8 +16,8 @@ export class Information {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Users, (users) => users.id)
-  userId: number;
+  @ManyToOne(() => Users, (users) => users.name)
+  userId: string;
 
   @Column({ comment: '图书ISBN' })
   ISBN: number;
