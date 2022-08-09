@@ -3,5 +3,5 @@ export class CreateRolesDto {
 
   readonly description: string;
 
-  readonly permisssion: [];
+  readonly permission: [];
 }

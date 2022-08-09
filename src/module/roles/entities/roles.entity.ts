@@ -20,7 +20,7 @@ export class Roles {
 
   @ManyToMany(() => Permissions)
   @JoinTable()
-  permission: Permissions[];
+  permissions: Permissions[];
 
   @Column({ length: 200, comment: '描述', nullable: true })
   description: string;

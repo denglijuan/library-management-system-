@@ -8,8 +8,8 @@ export class RolesController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() body: CreateRolesDto) {
-    this.rolesService.create(body);
+  async create(@Body() body) {
+    await this.rolesService.create(body);
     return '创建成功';
   }
 }
