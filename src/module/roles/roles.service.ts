@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Permissions } from 'src/module/permissions/entities/permissions.entity';
+import { Permissions } from 'src/module/permissions/permissions.entity';
 import { getManager, Repository } from 'typeorm';
-import { CreateRolesDto } from '../dto/create-roles.dto';
-import { Roles } from '../entities/roles.entity';
+import { CreateRolesDto } from './create-roles.dto';
+import { Roles } from './roles.entity';
 
 @Injectable()
 export class RolesService {
@@ -29,5 +29,10 @@ export class RolesService {
     roles.permissions = list;
 
     return await this.rolesRepository.save(roles);
+  }
+
+  async delete(id: string) {
+    const role = await this.rolesRepository.findOneBy({ id });
+    return this.rolesRepository.remove(role);
   }
 }

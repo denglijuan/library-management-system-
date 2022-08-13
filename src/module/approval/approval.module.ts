@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ApprovalController } from './controller/approval.controller';
-import { ApprovalService } from './service/approval.service';
-import { Approval } from './entities/approval.entity';
+import { ApprovalController } from './approval.controller';
+import { ApprovalService } from './approval.service';
+import { Approval } from './approval.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

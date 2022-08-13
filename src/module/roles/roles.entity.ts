@@ -1,34 +1,29 @@
-import { Information } from 'src/module/books/entities/infoemation.entity';
-import { Users } from 'src/module/users/entities/users.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  ManyToOne,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Permissions } from '../permissions/permissions.entity';
 
 @Entity()
-export class Borrows {
+export class Roles {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Users, (users) => users.name)
-  userId: string;
+  @Column({ length: 20, comment: '角色名称' })
+  name: string;
 
-  @ManyToOne(() => Information, (Information) => Information.id)
-  informationId: Information;
+  @ManyToMany(() => Permissions)
+  @JoinTable()
+  permissions: Permissions[];
 
-  @Column({ type: 'enum', enum: [0, 1, 2] })
-  status: [0, 1, 2];
-
-  @Column('datetime', { name: 'stard_at', comment: '借阅时间' })
-  stardAt;
-
-  @Column('datetime', { name: 'end_at', comment: '归还时间' })
-  endAt;
+  @Column({ length: 200, comment: '描述', nullable: true })
+  description: string;
 
   @CreateDateColumn({
     type: 'timestamp',

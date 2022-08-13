@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ClassificationController } from './controller/classification.controller';
-import { Classification } from './entities/classification.entity';
-import { ClassificationService } from './service/classification.service';
+import { ClassificationController } from './classification/classification.controller';
+import { Classification } from './classification/classification.entity';
+import { ClassificationService } from './classification/classification.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Classification])],

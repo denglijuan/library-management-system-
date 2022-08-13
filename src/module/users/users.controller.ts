@@ -9,9 +9,9 @@ import {
   Post,
   UseInterceptors,
 } from '@nestjs/common';
-import { LoginUserDto } from '../dto/login-users.dto';
-import { Users } from '../entities/users.entity';
-import { UsersService } from '../service/users.service';
+import { LoginUserDto } from './login-users.dto';
+import { Users } from './users.entity';
+import { UsersService } from './users.service';
 
 @Controller('users')
 export class UserController {

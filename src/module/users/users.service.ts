@@ -1,8 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  HttpCode,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { LoginUserDto } from '../dto/login-users.dto';
-import { Users } from '../entities/users.entity';
+import { LoginUserDto } from './login-users.dto';
+import { Users } from './users.entity';
 
 @Injectable()
 export class UsersService {
@@ -16,14 +23,13 @@ export class UsersService {
     return this.classificationRepository.save(user);
   }
 
-  async findOne(name: string) {
+  async findOne(username: string) {
     const user = await this.classificationRepository.findOneBy({
-      name,
+      username,
     });
     if (!user) {
-      throw new NotFoundException(`Classification #${name} not found`);
+      throw new InternalServerErrorException(`Users #${username} not found`);
     }
-    console.log('user', user);
     return user;
   }
 }

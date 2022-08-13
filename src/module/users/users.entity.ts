@@ -1,4 +1,4 @@
-import { Roles } from 'src/module/roles/entities/roles.entity';
+import { Roles } from 'src/module/roles/roles.entity';
 import {
   Column,
   CreateDateColumn,
@@ -12,7 +12,7 @@ import {
 @Entity()
 export class Users {
   @PrimaryColumn()
-  name: string;
+  username: string;
 
   @Column({ comment: '密码' })
   password: string;

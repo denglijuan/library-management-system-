@@ -1,4 +1,4 @@
-import { Users } from 'src/module/users/entities/users.entity';
+import { Users } from 'src/module/users/users.entity';
 import {
   Column,
   CreateDateColumn,
@@ -16,7 +16,7 @@ export class Information {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Users, (users) => users.name)
+  @ManyToOne(() => Users, (users) => users.username)
   userId: string;
 
   @Column({ comment: '图书ISBN' })

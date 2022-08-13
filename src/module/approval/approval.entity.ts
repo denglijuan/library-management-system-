@@ -3,24 +3,36 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Permissions } from '../../permissions/entities/permissions.entity';
+import { Information } from 'src/module/books/classification/information.entity';
+import { Users } from 'src/module/users/users.entity';
 
 @Entity()
-export class Roles {
+export class Approval {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 20, comment: '角色名称' })
-  name: string;
+  @ManyToOne(() => Information, (Information) => Information.id)
+  booksInfomationId: Information;
 
-  @ManyToMany(() => Permissions)
-  @JoinTable()
-  permissions: Permissions[];
+  @ManyToOne(() => Users, (user) => user.username)
+  userId: string;
+
+  @Column('datetime', { name: 'stard_at', comment: '借阅时间' })
+  stardAt;
+
+  @Column('datetime', { name: 'end_at', comment: '归还时间' })
+  endAt;
+
+  @Column({
+    type: 'enum',
+    enum: [-1, 0, 1],
+    comment: '-1 拒绝，0 审核中，1 通过',
+  })
+  status: [-1, 0, 1];
 
   @Column({ length: 200, comment: '描述', nullable: true })
   description: string;

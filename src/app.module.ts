@@ -4,17 +4,16 @@ import { AuthModule } from './module/auth/auth.module';
 import { ApprovalModule } from './module/approval/approval.module';
 import { BooksModule } from './module/books/books.module';
 import { BorrowsModule } from './module/borrows/borrows.module';
-import { LoginModule } from './module/login/login.module';
 import { PermissionsModule } from './module/permissions/permissions.module';
 import { RolesModule } from './module/roles/roles.module';
 import { UsersModule } from './module/users/users.module';
-import { Users } from './module/users/entities/users.entity';
-import { Borrows } from './module/borrows/entities/borrows.entity';
-import { Classification } from './module/books/entities/classification.entity';
-import { Information } from './module/books/entities/infoemation.entity';
-import { Permissions } from './module/permissions/entities/permissions.entity';
-import { Roles } from './module/roles/entities/roles.entity';
-import { Approval } from './module/approval/entities/approval.entity';
+import { Users } from './module/users/users.entity';
+import { Borrows } from './module/borrows/borrows.entity';
+import { Classification } from './module/books/classification/classification.entity';
+import { Information } from './module/books/classification/information.entity';
+import { Permissions } from './module/permissions/permissions.entity';
+import { Roles } from './module/roles/roles.entity';
+import { Approval } from './module/approval/approval.entity';
 
 @Module({
   // 导入其他模块中导出的 Providers, 以实现共享
@@ -23,7 +22,6 @@ import { Approval } from './module/approval/entities/approval.entity';
     ApprovalModule,
     BooksModule,
     BorrowsModule,
-    LoginModule,
     PermissionsModule,
     RolesModule,
     UsersModule,
