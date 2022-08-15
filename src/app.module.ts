@@ -7,6 +7,8 @@ import { BorrowsModule } from './module/borrows/borrows.module';
 import { PermissionsModule } from './module/permissions/permissions.module';
 import { RolesModule } from './module/roles/roles.module';
 import { UsersModule } from './module/users/users.module';
+// import { EmailModule } from './module/email/email.module';
+import { UtilsModule } from './module/utils/utils.module';
 import { Users } from './module/users/users.entity';
 import { Borrows } from './module/borrows/borrows.entity';
 import { Classification } from './module/books/classification/classification.entity';
@@ -25,6 +27,7 @@ import { Approval } from './module/approval/approval.entity';
     PermissionsModule,
     RolesModule,
     UsersModule,
+    UtilsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

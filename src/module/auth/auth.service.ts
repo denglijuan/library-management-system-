@@ -12,11 +12,8 @@ export class AuthService {
   ) {}
 
   async validateUser({ username, password }: LoginUserDto): Promise<any> {
-    const user = await this.userService.findOne(username);
-    if (user && user.password === password) {
-      return user;
-    }
-    return null;
+    const user = await this.userService.login(username, password);
+    return user;
   }
 
   async login(user) {
@@ -24,7 +21,7 @@ export class AuthService {
       username: user.username,
       sub: user.username,
     });
-    const new_user = omit(user, ['password']);
+    const new_user = omit(user, ['password', 'deleteAt']);
     return { ...new_user, token };
   }
 }

@@ -1,4 +1,6 @@
 import { Roles } from 'src/module/roles/roles.entity';
+import { Exclude } from 'class-transformer';
+
 import {
   Column,
   CreateDateColumn,
@@ -14,10 +16,11 @@ export class Users {
   @PrimaryColumn()
   username: string;
 
+  @Exclude()
   @Column({ comment: '密码' })
   password: string;
 
-  @ManyToOne(() => Roles, (roles) => roles.name)
+  @ManyToOne(() => Roles, (roles) => roles.id)
   role: string;
 
   @Column({ comment: '电话', nullable: true })
@@ -33,6 +36,7 @@ export class Users {
     type: 'timestamp',
     name: 'created_at',
     comment: '创建时间',
+    select: false,
   })
   createdAt: Date;
 
@@ -40,6 +44,7 @@ export class Users {
     type: 'timestamp',
     name: 'updated_at',
     comment: '更新时间',
+    select: false,
   })
   updatedAt: Date;
 
@@ -47,6 +52,7 @@ export class Users {
     type: 'timestamp',
     name: 'delete_at',
     comment: '删除时间',
+    select: false,
   })
   deleteAt: Date;
 }

@@ -10,13 +10,13 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { LoginUserDto } from './login-users.dto';
-import { Users } from './users.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly usersService: UsersService) {}
 
+  @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() loginUserDto: LoginUserDto) {
@@ -25,7 +25,7 @@ export class UserController {
 
   @Get(':name')
   @UseInterceptors(ClassSerializerInterceptor)
-  findOne(@Param('name') name: string): Promise<Users> {
-    return this.usersService.findOne(name);
+  async findOne(@Param('name') name: string): Promise<boolean> {
+    return await this.usersService.findOne(name);
   }
 }

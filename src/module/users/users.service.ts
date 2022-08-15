@@ -1,13 +1,7 @@
-import {
-  HttpCode,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import * as bcryptjs from 'bcryptjs';
 import { LoginUserDto } from './login-users.dto';
 import { Users } from './users.entity';
 
@@ -18,18 +12,39 @@ export class UsersService {
     private readonly classificationRepository: Repository<Users>,
   ) {}
 
-  create(loginUserDto: LoginUserDto) {
-    const user = this.classificationRepository.create(loginUserDto);
+  create({ username, password }: LoginUserDto) {
+    const hashPassword = bcryptjs.hashSync(password, 10);
+    const user = this.classificationRepository.create({
+      username,
+      password: hashPassword,
+    });
     return this.classificationRepository.save(user);
+  }
+
+  async login(username: string, password: string) {
+    const user = await this.classificationRepository.find({
+      where: {
+        username,
+        password,
+      },
+    });
+
+    if (user.length === 0) {
+      throw new InternalServerErrorException(`密码错误`);
+    }
+
+    return user;
   }
 
   async findOne(username: string) {
     const user = await this.classificationRepository.findOneBy({
       username,
     });
-    if (!user) {
-      throw new InternalServerErrorException(`Users #${username} not found`);
+
+    if (user) {
+      return true;
     }
-    return user;
+
+    throw new InternalServerErrorException(`账户不存在`);
   }
 }
