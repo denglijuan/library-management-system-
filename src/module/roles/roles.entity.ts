@@ -15,7 +15,7 @@ export class Roles {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 20, comment: '角色名称' })
+  @Column({ length: 20, comment: '角色名称', unique: true })
   name: string;
 
   @ManyToMany(() => Permissions)
