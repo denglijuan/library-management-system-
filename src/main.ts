@@ -1,14 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
-import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { JwtAuth } from './module/auth/JwtAuth';
-import {
-  ExceptionFilter,
-  Catch,
-  ArgumentsHost,
-  HttpException,
-  HttpStatus,
-} from '@nestjs/common';
+import { AllExceptionsFilter } from './throw/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,8 +9,8 @@ async function bootstrap() {
   // 路由前缀
   app.setGlobalPrefix('v1');
 
-  // 全局 jwt
-  // app.useGlobalGuards(new JwtAuth(new Reflector()));
+  // 全局注册错误过滤器
+  app.useGlobalFilters(new AllExceptionsFilter());
 
   // 内置验证管道;
   app.useGlobalPipes(
