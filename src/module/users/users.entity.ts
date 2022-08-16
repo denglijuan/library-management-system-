@@ -1,5 +1,5 @@
 import { Roles } from 'src/module/roles/roles.entity';
-import { Exclude } from 'class-transformer';
+// import { Exclude } from 'class-transformer';
 
 import {
   Column,
@@ -16,7 +16,7 @@ export class Users {
   @PrimaryColumn()
   username: string;
 
-  @Exclude()
+  // @Exclude()
   @Column({ comment: '密码' })
   password: string;
 
@@ -29,7 +29,7 @@ export class Users {
   @Column({ length: 40, comment: '邮箱', nullable: true })
   email: string;
 
-  @Column({ comment: '状态', nullable: true })
+  @Column({ comment: '状态', nullable: true, default: true })
   status: boolean;
 
   @CreateDateColumn({

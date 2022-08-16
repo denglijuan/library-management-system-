@@ -19,13 +19,15 @@ export class UserController {
   @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() loginUserDto: LoginUserDto) {
-    return this.usersService.create(loginUserDto);
+  async create(@Body() loginUserDto: LoginUserDto) {
+    const user = await this.usersService.create(loginUserDto);
+    return user.username;
   }
 
   @Get(':name')
   @UseInterceptors(ClassSerializerInterceptor)
-  async findOne(@Param('name') name: string): Promise<boolean> {
-    return await this.usersService.findOne(name);
+  async findOne(@Param('name') name: string) {
+    const user = await this.usersService.findOne(name);
+    return user.username;
   }
 }

@@ -21,7 +21,7 @@ export class AuthService {
       username: user.username,
       sub: user.username,
     });
-    const new_user = omit(user, ['password', 'deleteAt']);
+    const new_user = omit(user, ['password']);
     return { ...new_user, token };
   }
 }

@@ -6,13 +6,15 @@ import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { LoginController } from './login.controller';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 @Module({
   imports: [
     UsersModule,
     PassportModule,
     JwtModule.register({
-      secret: process.env.SECRET_KEY,
+      secret: 'qweasdzxc',
       signOptions: { expiresIn: '8h' },
     }),
   ],

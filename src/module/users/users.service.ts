@@ -22,14 +22,10 @@ export class UsersService {
   }
 
   async login(username: string, password: string) {
-    const user = await this.classificationRepository.find({
-      where: {
-        username,
-        password,
-      },
-    });
+    const user = await this.findOne(username);
+    const isPassword = bcryptjs.compareSync(password, user.password);
 
-    if (user.length === 0) {
+    if (!isPassword) {
       throw new InternalServerErrorException(`密码错误`);
     }
 
@@ -42,7 +38,7 @@ export class UsersService {
     });
 
     if (user) {
-      return true;
+      return user;
     }
 
     throw new InternalServerErrorException(`账户不存在`);
