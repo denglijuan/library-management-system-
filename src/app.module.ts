@@ -8,7 +8,7 @@ import { PermissionsModule } from './module/permissions/permissions.module';
 import { RolesModule } from './module/roles/roles.module';
 import { UsersModule } from './module/users/users.module';
 // import { EmailModule } from './module/email/email.module';
-import { UtilsModule } from './module/utils/utils.module';
+// import { UtilsModule } from './module/utils/utils.module';
 import { Users } from './module/users/users.entity';
 import { Borrows } from './module/borrows/borrows.entity';
 import { Classification } from './module/books/classification/classification.entity';
@@ -27,14 +27,14 @@ import { Approval } from './module/approval/approval.entity';
     PermissionsModule,
     RolesModule,
     UsersModule,
-    UtilsModule,
+    // UtilsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
+      host: '10.49.173.21',
+      port: 8636,
       username: 'root',
-      password: 'admin123',
-      database: 'library_management',
+      password: 'tanghui315',
+      database: 'denglijuan',
       autoLoadEntities: true,
       entities: [
         Users,
