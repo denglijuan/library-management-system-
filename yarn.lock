@@ -707,17 +707,16 @@
     webpack "5.73.0"
     webpack-node-externals "3.0.0"
 
-"@nestjs/common@^8.0.0":
-  version "8.4.3"
-  resolved "https://registry.npm.qianxin-inc.cn/@nestjs/common/download/@nestjs/common-8.4.3.tgz#185d15ac1835256e8c5d4035a8b2d04cd705dfb4"
-  integrity sha1-GF0VrBg1JW6MXUA1qLLQTNcF37Q=
+"@nestjs/common@^9.0.9":
+  version "9.0.9"
+  resolved "https://registry.npm.qianxin-inc.cn/@nestjs/common/download/@nestjs/common-9.0.9.tgz#5255a9cffa070f3c7d3be4a201c91515bcbc4dfb"
+  integrity sha1-UlWpz/oHDzx9O+SiAckVFby8Tfs=
   dependencies:
-    axios "0.26.1"
     iterare "1.2.1"
-    tslib "2.3.1"
+    tslib "2.4.0"
     uuid "8.3.2"
 
-"@nestjs/core@^8.0.0":
+"@nestjs/core@^8.3.1":
   version "8.3.1"
   resolved "https://registry.npm.qianxin-inc.cn/@nestjs/core/download/@nestjs/core-8.3.1.tgz#737c2aef5529da7946de82414e7065ab01c27bad"
   integrity sha1-c3wq71Up2nlG3oJBTnBlqwHCe60=
@@ -1520,13 +1519,6 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npm.qianxin-inc.cn/asynckit/download/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
-
-axios@0.26.1:
-  version "0.26.1"
-  resolved "https://registry.npm.qianxin-inc.cn/axios/download/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
-  integrity sha1-Ht5BxR/PUbu9b9Q2acqqTwSVqqk=
-  dependencies:
-    follow-redirects "^1.14.8"
 
 babel-jest@^28.1.3:
   version "28.1.3"
@@ -2826,11 +2818,6 @@ flatted@^3.1.0:
   version "3.2.6"
   resolved "https://registry.npm.qianxin-inc.cn/flatted/download/flatted-3.2.6.tgz#022e9218c637f9f3fc9c35ab9c9193f05add60b2"
   integrity sha1-Ai6SGMY3+fP8nDWrnJGT8FrdYLI=
-
-follow-redirects@^1.14.8:
-  version "1.15.1"
-  resolved "https://registry.npm.qianxin-inc.cn/follow-redirects/download/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
-  integrity sha1-DKakUjBsmyduTTEnSD4pV14getU=
 
 fork-ts-checker-webpack-plugin@7.2.11:
   version "7.2.11"
@@ -5953,15 +5940,15 @@ tslib@2.3.1:
   resolved "https://registry.npm.qianxin-inc.cn/tslib/download/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=
 
+tslib@2.4.0, tslib@^2.0.1, tslib@^2.1.0, tslib@^2.3.1:
+  version "2.4.0"
+  resolved "https://registry.npm.qianxin-inc.cn/tslib/download/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha1-fOyqfwc85oCgWEeqd76UEJjzbcM=
+
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.npm.qianxin-inc.cn/tslib/download/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
-
-tslib@^2.0.1, tslib@^2.1.0, tslib@^2.3.1:
-  version "2.4.0"
-  resolved "https://registry.npm.qianxin-inc.cn/tslib/download/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha1-fOyqfwc85oCgWEeqd76UEJjzbcM=
 
 tsutils@^3.21.0:
   version "3.21.0"

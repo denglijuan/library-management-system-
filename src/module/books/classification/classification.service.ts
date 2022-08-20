@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateClassificationDto } from './create-calssification.dto';
-import { UpdateClassificationDto } from './update-classification.dto';
+import { CreateClassificationDto } from './dto/create-calssification.dto';
+import { UpdateClassificationDto } from './dto/update-classification.dto';
 import { Classification } from './classification.entity';
 
 @Injectable()

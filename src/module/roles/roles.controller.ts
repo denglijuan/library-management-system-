@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Delete,
+  Patch,
   HttpCode,
   HttpStatus,
   Param,
@@ -25,5 +26,10 @@ export class RolesController {
   async delete(@Param('id') id: string) {
     await this.rolesService.delete(id);
     return '删除成功';
+  }
+
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() body) {
+    await this.rolesService.update(id, body);
   }
 }

@@ -24,7 +24,7 @@ export class Users {
   role: string;
 
   @Column({ comment: '电话', nullable: true })
-  phone: number;
+  phone: string;
 
   @Column({ length: 40, comment: '邮箱', nullable: true })
   email: string;

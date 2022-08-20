@@ -10,8 +10,8 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { CreateClassificationDto } from './create-calssification.dto';
-import { UpdateClassificationDto } from './update-classification.dto';
+import { CreateClassificationDto } from './dto/create-calssification.dto';
+import { UpdateClassificationDto } from './dto/update-classification.dto';
 import { ClassificationService } from './classification.service';
 @Controller('books')
 export class ClassificationController {
